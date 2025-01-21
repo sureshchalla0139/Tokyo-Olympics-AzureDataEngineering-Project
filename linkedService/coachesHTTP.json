@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://raw.githubusercontent.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/refs/heads/main/Data/coaches.csv",
+			"url": "https://raw.githubusercontent.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/refs/heads/main/Data",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
