@@ -6,7 +6,7 @@
 		],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://github.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/blob/main/Data/athletes.csv",
+			"url": "https://github.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/blob/main/Data/athletes.csv?plain=1",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
