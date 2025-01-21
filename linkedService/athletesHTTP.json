@@ -1,10 +1,12 @@
 {
 	"name": "athletesHTTP",
 	"properties": {
-		"annotations": [],
+		"annotations": [
+			"athletes HTTP"
+		],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://github.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/blob/main/Data/Athletes.xlsx",
+			"url": "https://github.com/sureshchalla0139/Tokyo-Olympics-AzureDataEngineering-Project/blob/main/Data/athletes.csv",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
