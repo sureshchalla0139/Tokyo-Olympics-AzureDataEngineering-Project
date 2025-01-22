@@ -1,0 +1,20 @@
+{
+	"name": "DS_LOOKUP_FILES",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_LOOKUP_FILES",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "HttpAllFilesLookup.json",
+				"folderPath": "raw-data",
+				"fileSystem": "tokyo-olympics"
+			}
+		},
+		"schema": {}
+	}
+}
