@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "HttpAllFilesLookup.json",
-				"folderPath": "raw-data",
+				"folderPath": "input",
 				"fileSystem": "tokyo-olympics"
 			}
 		},
