@@ -3,8 +3,7 @@
 	"properties": {
 		"parameters": {
 			"urlfilename": {
-				"type": "string",
-				"defaultValue": "athletes"
+				"type": "string"
 			}
 		},
 		"annotations": [
