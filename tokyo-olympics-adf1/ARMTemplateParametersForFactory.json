@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "tokyo-olympics-adf1"
+		},
+		"LS_LOOKUP_FILES_accountKey": {
+			"value": ""
+		},
+		"LS_HttpAllFiles_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseURL}"
+		},
+		"LS_LOOKUP_FILES_properties_typeProperties_url": {
+			"value": "https://adlsgen2tokyoolympics.dfs.core.windows.net/"
+		}
+	}
+}
