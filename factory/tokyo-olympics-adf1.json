@@ -1,9 +1,0 @@
-{
-	"name": "tokyo-olympics-adf1",
-	"location": "centralindia",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "00109271-6bce-4ae1-8438-a3e345e360c2",
-		"tenantId": "fdc798aa-6f15-4e72-bf4a-6c813690fc75"
-	}
-}
