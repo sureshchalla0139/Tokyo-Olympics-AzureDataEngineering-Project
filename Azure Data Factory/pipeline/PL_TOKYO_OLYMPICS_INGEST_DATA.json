@@ -1,0 +1,133 @@
+{
+	"name": "PL_TOKYO_OLYMPICS_INGEST_DATA",
+	"properties": {
+		"activities": [
+			{
+				"name": "LookupAllFiles",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_LOOKUP_FILES",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachAllFiles",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LookupAllFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LookupAllFiles').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "CPY_ALL_FILES",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"value": "@item().DynamicMap",
+									"type": "Expression"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_HTTP_ALL_FILES",
+									"type": "DatasetReference",
+									"parameters": {
+										"BaseURL": {
+											"value": "@item().BaseURL",
+											"type": "Expression"
+										},
+										"RelativeURL": {
+											"value": "@item().RelativeURL",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_ALL_FILES",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@item().FileName",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"FILENAME": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
